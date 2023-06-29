@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+aiogram = "~=2.14"
+environs = "~=8.0.0"
+django = "*"
+psycopg2 = "*"
+asyncpg = "*"
+crispy-bootstrap5 = "*"
+django-crispy-forms = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"

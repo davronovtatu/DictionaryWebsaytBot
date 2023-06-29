@@ -1,0 +1,45 @@
+{% extends 'translate.html' %}
+{% block title %}Tarjimon{% endblock title %}
+
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            {% if counts %}
+            <h3 class="text-center mt-3">Bazada: {{ counts }} ta so'z bor</h3>
+            {% else %}
+                <h3 class="text-center mt-3">Qidirish uchun so'z kiriting</h3>
+            {% endif %}
+            <div class="col-2"></div>
+            <div class="col-5">
+                <form method="post" action="{% url 'translate' %}">
+                    {% csrf_token %}
+                    <label for="input_word" class="form-label">So'z kiriting:</label>
+                    <div class="input-group">
+                        <input class="form-control" type="text" name="input_word" id="input_word" autocomplete="off">
+                        <button class="btn btn-success" type="submit">Tarjima</button>
+                    </div>
+                    <br>
+                    <div class="form-check">
+                        <input type="radio" name="translation_type" id="uz_to_en" value="uz_to_en" checked class="form-check-input">
+                        <label for="uz_to_en" class="form-check-label">O'zbekdan Inglizchaga</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="translation_type" id="en_to_uz" value="en_to_uz" class="form-check-input">
+                        <label for="en_to_uz" class="form-check-label">Inglizchadan O'zbekchaga</label>
+                    </div>
+                </form>
+            </div>
+                <div class="col-5">
+                    {% if translation %}
+                     <label class="form-label" for="input_word">Natija</label>
+                     <input type="text" class="form-control text-danger" value="{{ translation }}" readonly>
+                     {% endif %}
+                </div>
+
+            </div>
+
+
+        </div>
+
+{% endblock content %}
